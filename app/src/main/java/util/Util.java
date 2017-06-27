@@ -10,6 +10,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import model.Canada;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+
+import static android.R.string.ok;
 
 /**
  * Created by yan_zhe on 2017/6/27.
@@ -26,6 +30,7 @@ public class Util {
             String line;
             while ((line = bf.readLine()) != null) {
                 stringBuilder.append(line);
+                System.out.println(stringBuilder.toString());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -35,8 +40,15 @@ public class Util {
 
     public static Canada parseFromGson(Context context) {
         Gson gson = new Gson();
-        Canada canada = gson.fromJson(getJson(context, "example.json"), Canada.class);
+        String s = getJson(context, "example.json");
+        Canada canada = gson.fromJson(s,Canada.class);
         return canada;
 
+    }
+
+    public static void sendHttpRuquest(String add , okhttp3.Callback callback){
+        OkHttpClient client = new OkHttpClient();
+        Request  request = new Request.Builder().url(add).build();
+        client.newCall(request).enqueue(callback);
     }
 }
