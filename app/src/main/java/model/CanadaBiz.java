@@ -40,27 +40,6 @@ public class CanadaBiz implements ICanadaBiz {
     }
 
 
-    public void loadPic(String s, final ImageView view) {
-        Util.sendHttpRuquest(s, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-
-                final String pic = response.body().string();
-                mainView.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Glide.with(mainView).load(pic).into(view);
-                    }
-                });
-            }
-        });
-    }
-
     class MyAdapter extends BaseAdapter {
         Context context;
 
@@ -113,9 +92,9 @@ public class CanadaBiz implements ICanadaBiz {
             } else
                 viewHolder.description.setVisibility(View.GONE);
 
-            if (rowsBean.getImageHref() != null) {
+            if (rowsBean.getImageHref() != null ) {
                 viewHolder.image.setVisibility(View.VISIBLE);
-                loadPic(rowsBean.getImageHref(), viewHolder.image);
+                Glide.with(mainView).load(rowsBean.getImageHref()).into(viewHolder.image);
             } else {
                 viewHolder.image.setVisibility(View.GONE);
             }
