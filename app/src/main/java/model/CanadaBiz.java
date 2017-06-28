@@ -2,8 +2,6 @@ package model;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.yan_zhe.mvp_rxjavatest.R;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
-import util.Util;
 import view.IMainView;
 
 /**
@@ -94,7 +88,8 @@ public class CanadaBiz implements ICanadaBiz {
 
             if (rowsBean.getImageHref() != null ) {
                 viewHolder.image.setVisibility(View.VISIBLE);
-                Glide.with(mainView).load(rowsBean.getImageHref()).into(viewHolder.image);
+                Glide.with(mainView).load(rowsBean.getImageHref()).diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .override(500, 500).into(viewHolder.image);
             } else {
                 viewHolder.image.setVisibility(View.GONE);
             }
