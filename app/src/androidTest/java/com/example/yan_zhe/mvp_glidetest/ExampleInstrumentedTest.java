@@ -1,4 +1,4 @@
-package com.example.yan_zhe.mvp_rxjavatest;
+package com.example.yan_zhe.mvp_glidetest;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.example.yan_zhe.mvp_rxjavatest;
+package com.example.yan_zhe.mvp_glidetest;
 
 import org.junit.Test;
 
