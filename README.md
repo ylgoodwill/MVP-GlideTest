@@ -1,3 +1,3 @@
 # MVP-RXJAVATest
 
-A simple example that use MVP and RXjava .
+A simple example that use MVP and Glide .
